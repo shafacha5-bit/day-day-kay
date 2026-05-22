@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Kay Kay 🎀</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #f9c0d4;
+    --pink-deep: #f391b2;
+    --pink-light: #fde8f1;
+    --blue: #b3d9f7;
+    --blue-deep: #7bbfe8;
+    --blue-light: #dff0fb;
+    --lavender: #d4c5f0;
+    --cream: #fff8f9;
+    --text: #6a4a6e;
+    --text-soft: #9b7aaa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: var(--cream);
+    overflow-x: hidden;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='18'%3E🌸%3C/text%3E%3C/svg%3E") 12 12, auto;
+  }
+
+  /* ===== SPLASH SCREEN ===== */
+  #splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #fde8f1 0%, #dff0fb 50%, #eeddf8 100%);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  #splash.hide {
+    opacity: 0;
+    transform: scale(1.05);
+    pointer-events: none;
+  }
+
+  .splash-ribbon {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 8px;
+    background: repeating-linear-gradient(90deg, var(--pink) 0px, var(--pink) 20px, var(--blue) 20px, var(--blue) 40px, var(--lavender) 40px, var(--lavender) 60px);
+  }
+
+  .splash-deco {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    animation: float 2s ease-in-out infinite;
+    letter-spacing: 0.5rem;
+  }
+
+  .splash-card {
+    background: white;
+    border-radius: 28px;
+    padding: 2.5rem 3rem;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(243, 145, 178, 0.25), 0 0 0 3px rgba(243, 145, 178, 0.15);
+    max-width: 420px;
+    width: 90%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .splash-card::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, var(--pink-light), transparent 70%);
+    border-radius: 50%;
+  }
+
+  .splash-card::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: -30px;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, var(--blue-light), transparent 70%);
+    border-radius: 50%;
+  }
+
+  .splash-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--pink), var(--lavender));
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.3rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .splash-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .splash-sub {
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .splash-note {
+    font-size: 0.82rem;
+    color: #bca0c5;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .splash-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--pink-deep), #d89de8);
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.9rem 2.2rem;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 25px rgba(243, 145, 178, 0.45);
+    letter-spacing: 0.5px;
+  }
+
+  .splash-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 35px rgba(243, 145, 178, 0.6);
+  }
+
+  .splash-btn:active { transform: scale(0.97); }
+
+  /* ===== FLOATING PARTICLES ===== */
+  .particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    font-size: 1.2rem;
+    animation: drift linear infinite;
+    opacity: 0.7;
+  }
+
+  @keyframes drift {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.5; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ===== MAIN PAGE ===== */
+  #main {
+    display: none;
+    min-height: 100vh;
+  }
+
+  #main.show { display: block; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #fde8f1 0%, #dff0fb 40%, #eeddf8 80%, #fde8f1 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .hero-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .hero-bg-circle:nth-child(1) { width: 400px; height: 400px; background: var(--pink); top: -100px; left: -100px; }
+  .hero-bg-circle:nth-child(2) { width: 350px; height: 350px; background: var(--blue); bottom: -80px; right: -80px; }
+  .hero-bg-circle:nth-child(3) { width: 250px; height: 250px; background: var(--lavender); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+
+  .hero-content { position: relative; z-index: 2; }
+
+  .hero-emoji-row {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    animation: bounce 1s ease-in-out infinite alternate;
+    letter-spacing: 0.3rem;
+  }
+
+  @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+
+  .hero-badge {
+    display: inline-block;
+    background: white;
+    border: 2px solid var(--pink);
+    color: var(--text-soft);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(243, 145, 178, 0.2);
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+    background: linear-gradient(135deg, #c87bb5, #7bbfe8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--text-soft);
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+    color: var(--pink-deep);
+    font-size: 1.2rem;
+  }
+
+  .hero-divider-line {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--pink-deep));
+    border-radius: 100px;
+  }
+
+  .hero-divider-line:last-child {
+    background: linear-gradient(90deg, var(--pink-deep), transparent);
+  }
+
+  .scroll-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-soft);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    animation: fade-up 2s ease-in-out infinite;
+    margin-top: 2rem;
+  }
+
+  .scroll-hint-arrow { font-size: 1.2rem; }
+
+  @keyframes fade-up {
+    0%, 100% { opacity: 0.4; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(5px); }
+  }
+
+  /* LETTER SECTION */
+  .letter-section {
+    background: white;
+    position: relative;
+    padding: 5rem 2rem;
+    overflow: hidden;
+  }
+
+  .letter-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: repeating-linear-gradient(90deg, var(--pink) 0px, var(--pink) 30px, var(--blue) 30px, var(--blue) 60px, var(--lavender) 60px, var(--lavender) 90px);
+  }
+
+  .letter-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .letter-top-deco {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    letter-spacing: 0.5rem;
+  }
+
+  .letter-envelope {
+    background: linear-gradient(135deg, #fff0f8, #f0f8ff);
+    border-radius: 32px;
+    padding: 3.5rem 3rem;
+    box-shadow:
+      0 4px 0 var(--pink),
+      0 20px 60px rgba(243, 145, 178, 0.15),
+      inset 0 0 0 1px rgba(243, 145, 178, 0.2);
+    position: relative;
+  }
+
+  .letter-envelope::before {
+    content: '✦';
+    position: absolute;
+    top: 1.2rem; right: 1.5rem;
+    color: var(--pink);
+    font-size: 1.2rem;
+    opacity: 0.5;
+  }
+
+  .letter-from {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: linear-gradient(135deg, var(--pink-light), var(--blue-light));
+    color: var(--text-soft);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(243, 145, 178, 0.3);
+  }
+
+  .letter-heading {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--text);
+    margin-bottom: 1.8rem;
+  }
+
+  .letter-body {
+    color: #7a5a85;
+    font-size: 1rem;
+    line-height: 2;
+    font-weight: 500;
+  }
+
+  .letter-body p { margin-bottom: 1.3rem; }
+  .letter-body p:last-child { margin-bottom: 0; }
+
+  .letter-signature {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px dashed rgba(243, 145, 178, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .letter-signature-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    color: var(--text);
+  }
+
+  .letter-hearts {
+    display: flex;
+    gap: 0.3rem;
+    font-size: 1.3rem;
+  }
+
+  /* BOTTOM SECTION */
+  .footer-section {
+    background: linear-gradient(160deg, #fde8f1, #dff0fb 60%, #eeddf8);
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer-emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+
+  .footer-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: var(--text);
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-sub {
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    font-weight: 500;
+    max-width: 400px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+
+  .footer-cake {
+    font-size: 5rem;
+    display: block;
+    animation: pulse 1.5s ease-in-out infinite alternate;
+    margin: 1rem auto;
+  }
+
+  @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.1); } }
+
+  .footer-ribbon {
+    height: 8px;
+    background: repeating-linear-gradient(90deg, var(--pink) 0px, var(--pink) 20px, var(--blue) 20px, var(--blue) 40px, var(--lavender) 40px, var(--lavender) 60px);
+    margin-top: 3rem;
+  }
+
+  /* CONFETTI CANVAS */
+  #confetti-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-12px) rotate(3deg); }
+  }
+
+  /* BALLOON */
+  .balloons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .balloon {
+    font-size: 2.5rem;
+    animation: float 2.5s ease-in-out infinite;
+  }
+  .balloon:nth-child(2) { animation-delay: 0.4s; }
+  .balloon:nth-child(3) { animation-delay: 0.8s; }
+
+  /* Stars scatter */
+  .star-scatter {
+    position: absolute;
+    pointer-events: none;
+    font-size: 1rem;
+    opacity: 0.35;
+  }
+
+  /* ===== MUSIC PLAYER ===== */
+  #music-player {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 500;
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.6rem;
+  }
+
+  #music-player.show { display: flex; }
+
+  .music-card {
+    background: white;
+    border-radius: 20px;
+    padding: 0.9rem 1.2rem;
+    box-shadow: 0 8px 30px rgba(243, 145, 178, 0.3), 0 0 0 2px rgba(243, 145, 178, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 230px;
+    animation: slide-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes slide-in {
+    from { opacity: 0; transform: translateY(20px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .music-icon {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, var(--pink-deep), #d89de8);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(243, 145, 178, 0.4);
+  }
+
+  .music-icon.spinning {
+    animation: spin 3s linear infinite;
+  }
+
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .music-info { flex: 1; min-width: 0; }
+
+  .music-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .music-artist {
+    font-size: 0.68rem;
+    color: var(--text-soft);
+    margin-top: 0.1rem;
+  }
+
+  .music-progress {
+    width: 100%;
+    height: 3px;
+    background: var(--pink-light);
+    border-radius: 100px;
+    margin-top: 0.4rem;
+    overflow: hidden;
+  }
+
+  .music-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--pink-deep), var(--blue-deep));
+    border-radius: 100px;
+    width: 0%;
+    transition: width 0.5s linear;
+  }
+
+  .music-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .music-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0.2rem;
+    line-height: 1;
+    transition: transform 0.15s;
+    opacity: 0.8;
+  }
+
+  .music-btn:hover { transform: scale(1.2); opacity: 1; }
+
+  .music-fab {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--pink-deep), #d89de8);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 6px 20px rgba(243, 145, 178, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .music-fab:hover { transform: scale(1.1); box-shadow: 0 8px 28px rgba(243, 145, 178, 0.7); }
+
+  .music-fab.pulse {
+    animation: music-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes music-pulse {
+    0%, 100% { box-shadow: 0 6px 20px rgba(243, 145, 178, 0.5); }
+    50% { box-shadow: 0 6px 30px rgba(243, 145, 178, 0.9), 0 0 0 8px rgba(243, 145, 178, 0.15); }
+  }
+
+  .music-wave {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    height: 16px;
+  }
+
+  .music-wave span {
+    display: block;
+    width: 3px;
+    background: linear-gradient(to top, var(--pink-deep), var(--blue-deep));
+    border-radius: 100px;
+    animation: wave-bar 1s ease-in-out infinite;
+  }
+
+  .music-wave span:nth-child(1) { height: 6px; animation-delay: 0s; }
+  .music-wave span:nth-child(2) { height: 12px; animation-delay: 0.15s; }
+  .music-wave span:nth-child(3) { height: 8px; animation-delay: 0.3s; }
+  .music-wave span:nth-child(4) { height: 14px; animation-delay: 0.45s; }
+  .music-wave span:nth-child(5) { height: 6px; animation-delay: 0.6s; }
+
+  @keyframes wave-bar {
+    0%, 100% { transform: scaleY(0.4); }
+    50% { transform: scaleY(1); }
+  }
+
+  .music-wave.paused span { animation-play-state: paused; }
+
+  /* ===== SONG SECTION ===== */
+  .song-section {
+    background: linear-gradient(160deg, #f0f8ff 0%, #fff0f8 50%, #f5f0ff 100%);
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .song-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: repeating-linear-gradient(90deg, var(--blue) 0px, var(--blue) 30px, var(--pink) 30px, var(--pink) 60px, var(--lavender) 60px, var(--lavender) 90px);
+  }
+
+  .song-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .song-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--pink-deep), #d89de8);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 14px rgba(243, 145, 178, 0.4);
+  }
+
+  .song-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+
+  .song-subtitle {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: var(--text-soft);
+    margin-bottom: 2.5rem;
+  }
+
+  .song-card {
+    background: white;
+    border-radius: 28px;
+    padding: 2.8rem 2.5rem;
+    box-shadow:
+      0 4px 0 var(--blue-deep),
+      0 20px 60px rgba(123, 191, 232, 0.2),
+      inset 0 0 0 1px rgba(123, 191, 232, 0.2);
+    position: relative;
+  }
+
+  .song-card::before {
+    content: '🎵';
+    position: absolute;
+    top: 1.2rem; left: 1.5rem;
+    font-size: 1.4rem;
+    opacity: 0.4;
+  }
+
+  .song-card::after {
+    content: '🎶';
+    position: absolute;
+    bottom: 1.2rem; right: 1.5rem;
+    font-size: 1.4rem;
+    opacity: 0.4;
+  }
+
+  .song-verse {
+    margin-bottom: 1.8rem;
+  }
+
+  .song-verse:last-child {
+    margin-bottom: 0;
+  }
+
+  .song-verse-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--pink-deep);
+    margin-bottom: 0.7rem;
+    opacity: 0.8;
+  }
+
+  .song-line {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+    color: var(--text);
+    line-height: 1.8;
+    font-weight: 700;
+  }
+
+  .song-line .highlight {
+    background: linear-gradient(135deg, var(--pink-deep), #d89de8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .song-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+    color: var(--pink);
+    font-size: 0.9rem;
+    letter-spacing: 0.3rem;
+  }
+
+  .song-divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--pink-light), transparent);
+  }
+
+  .song-note {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px dashed rgba(123, 191, 232, 0.3);
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  @media (max-width: 600px) {
+    #music-player { bottom: 1rem; right: 1rem; }
+    .music-card { min-width: 200px; }
+    .letter-envelope { padding: 2rem 1.5rem; }
+    .splash-card { padding: 2rem 1.5rem; }
+    .song-card { padding: 2rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CONFETTI CANVAS -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- PARTICLES -->
+<div class="particles" id="particles"></div>
+
+<!-- SPLASH SCREEN -->
+<div id="splash">
+  <div class="splash-ribbon"></div>
+  <div class="splash-deco">🎀 🌸 🎂</div>
+  <div class="splash-card">
+    <div class="splash-tag">✨ Spesial buat kamu ✨</div>
+    <div class="splash-title">Selamat ulang tahunn bestiee 🎉</div>
+    <div class="splash-sub">Ada sesuatu yang disiapkan khusus<br>untuk hari spesial kamu hari ini!</div>
+    <div class="splash-note">🔊 Aktifkan suara untuk pengalaman penuh</div>
+    <button class="splash-btn" id="enter-btn">
+      <span>Klik ini yapp</span>
+      <span>🌸</span>
+    </button>
+  </div>
+</div>
+
+<!-- MAIN PAGE -->
+<div id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-circle"></div>
+    <div class="hero-bg-circle"></div>
+    <div class="hero-bg-circle"></div>
+
+    <div class="hero-content fade-in visible">
+      <div class="balloons">
+        <span class="balloon">🩷</span>
+        <span class="balloon">🎈</span>
+        <span class="balloon">💙</span>
+      </div>
+
+      <div class="hero-badge">✦ Hari Istimewa ✦</div>
+
+      <div class="hero-name">Kayla</div>
+
+      <div class="hero-subtitle">Happy Birthday, Kay Kay 🎀</div>
+
+      <div class="hero-divider">
+        <div class="hero-divider-line"></div>
+        <span>🎂</span>
+        <div class="hero-divider-line"></div>
+      </div>
+
+      <div class="hero-emoji-row">🎉 🌸 🎊 💫 ✨</div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>scroll ke bawah</span>
+      <span class="scroll-hint-arrow">↓</span>
+    </div>
+  </section>
+
+  <!-- LETTER -->
+  <section class="letter-section">
+    <div class="letter-inner">
+      <div class="letter-top-deco fade-in">💌 🌸 💌</div>
+
+      <div class="letter-envelope fade-in">
+        <div class="letter-from">✉️ &nbsp; Surat untukmu</div>
+        <div class="letter-heading">Selamat ulang tahun temankuuu 🎉🤍</div>
+
+        <div class="letter-body">
+          <p>Aku selalu doakan yang terbaik untuk kamu. Terima kasih yaa sudah hadir dan menjadi bagian dari perjalanan selama 6 semester ini. Rasanya nggak kerasa kita sudah melewati banyak hal bersama, dari tugas yang numpuk, deadline, capeknya kuliah, sampai momen-momen kecil yang ternyata jadi kenangan juga.</p>
+
+          <p>Makasii karena sudah bertahan, sudah terus semangat, dan tetap berjuang sampai di titik sekarang. Aku tahu perjalanan selama kuliah nggak selalu mudah, tapi hebatnya kamu bisa sampai sejauh ini. Terima kasih juga untuk energi baik, tawa, dan kehadiran kamu di semester-semester yang kita lewati bersama.</p>
+
+          <p>Di umur yang baru ini, semoga kamu selalu diberi kesehatan, kebahagiaan, dan hati yang kuat untuk menghadapi apa pun. Semoga semua doa dan harapan baik kamu bisa pelan-pelan terwujud, urusan kuliah dipermudah, langkah ke depannya dilancarkan, dan kamu dipertemukan dengan banyak hal baik yang pantas kamu dapatkan.</p>
+
+          <p>Tetap jadi pribadi yang baik dan jangan lupa bahagia yaa. Semoga tahun ini lebih ramah dan lebih banyak membawa cerita indah buat kamu. Sekali lagi, selamat ulang tahun dan terima kasih sudah ada sampai semester ini 🤍✨</p>
+        </div>
+
+        <div class="letter-signature">
+          <div class="letter-signature-text">— shafa & kiaw 🌸</div>
+          <div class="letter-hearts">🩷 💙 🤍</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SONG LYRICS -->
+  <section class="song-section">
+    <div class="song-inner">
+      <div class="song-label fade-in">🎵 Yuk nyanyi bareng! 🎵</div>
+      <div class="song-title fade-in">Happy Birthday to You</div>
+      <div class="song-subtitle fade-in">Lagu spesial buat Kayla 🎂</div>
+
+      <div class="song-card fade-in">
+
+        <div class="song-verse">
+          <div class="song-verse-label">Verse 1</div>
+          <div class="song-line">
+            Happy birthday to you 🎶<br>
+            Happy birthday to you 🎵<br>
+            Happy birthday dear <span class="highlight">Kayla</span> 🎂<br>
+            Happy birthday to you ✨
+          </div>
+        </div>
+
+        <div class="song-divider">
+          <div class="song-divider-line"></div>
+          <span>🌸 🩷 🌸</span>
+          <div class="song-divider-line"></div>
+        </div>
+
+        <div class="song-verse">
+          <div class="song-verse-label">Verse 2 (Indonesia)</div>
+          <div class="song-line">
+            Selamat ulang tahun 🎉<br>
+            Selamat ulang tahun 🥳<br>
+            Selamat ulang tahun <span class="highlight">Kay Kay</span> 🎀<br>
+            Selamat ulang tahun 💫
+          </div>
+        </div>
+
+        <div class="song-divider">
+          <div class="song-divider-line"></div>
+          <span>💙 🌷 💙</span>
+          <div class="song-divider-line"></div>
+        </div>
+
+        <div class="song-verse">
+          <div class="song-verse-label">Doa & Harapan</div>
+          <div class="song-line">
+            Semoga panjang umur 🙏<br>
+            Semoga murah rezeki 💝<br>
+            Semoga bahagia selalu <span class="highlight">Kayla</span> 🌟<br>
+            Semoga mimpimu tercapai ✨
+          </div>
+        </div>
+
+        <div class="song-note">
+          🎵 Aktifkan musik di pojok kanan bawah dan nyanyikan bersama!
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC PLAYER -->
+  <div id="music-player">
+    <div class="music-card" id="music-card">
+      <div class="music-icon" id="music-disc">🎵</div>
+      <div class="music-info">
+        <div class="music-title">Happy Birthday 🎂</div>
+        <div class="music-artist">Untuk Kayla tercinta 🩷</div>
+        <div class="music-progress"><div class="music-progress-bar" id="progress-bar"></div></div>
+      </div>
+      <div class="music-controls">
+        <div class="music-wave" id="music-wave">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <button class="music-btn" id="play-pause-btn" title="Play/Pause">⏸️</button>
+      </div>
+    </div>
+    <button class="music-fab pulse" id="music-fab" title="Musik">🎵</button>
+  </div>
+
+  <!-- FOOTER -->
+  <section class="footer-section">
+    <div class="footer-emoji fade-in">🎊 🥳 🎊</div>
+    <div class="footer-title fade-in">Happy Birthday Kay Kay!</div>
+    <div class="footer-sub fade-in">Semoga hari ini dan setiap hari setelahnya<br>selalu penuh cinta dan kebahagiaan 💕</div>
+    <span class="footer-cake fade-in">🎂</span>
+    <div class="footer-ribbon"></div>
+  </section>
+
+</div>
+
+<script>
+// ========== PARTICLES ==========
+const particleEmojis = ['🌸','✨','💫','🎀','💕','🩷','💙','⭐','🌷','🌺'];
+const container = document.getElementById('particles');
+
+function createParticle() {
+  const el = document.createElement('div');
+  el.className = 'particle';
+  el.textContent = particleEmojis[Math.floor(Math.random() * particleEmojis.length)];
+  el.style.left = Math.random() * 100 + 'vw';
+  el.style.fontSize = (0.8 + Math.random() * 1) + 'rem';
+  el.style.animationDuration = (6 + Math.random() * 10) + 's';
+  el.style.animationDelay = (Math.random() * 5) + 's';
+  el.style.opacity = 0.5 + Math.random() * 0.5;
+  container.appendChild(el);
+  setTimeout(() => el.remove(), 20000);
+}
+
+for (let i = 0; i < 18; i++) setTimeout(createParticle, i * 400);
+setInterval(createParticle, 1500);
+
+// ========== CONFETTI ==========
+const canvas = document.getElementById('confetti-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+
+let pieces = [];
+const colors = ['#f9c0d4','#b3d9f7','#d4c5f0','#f391b2','#7bbfe8','#fde8f1','#fff','#ffd6e7'];
+
+function Piece() {
+  this.x = Math.random() * canvas.width;
+  this.y = -20;
+  this.w = 8 + Math.random() * 10;
+  this.h = 5 + Math.random() * 6;
+  this.color = colors[Math.floor(Math.random() * colors.length)];
+  this.rot = Math.random() * Math.PI * 2;
+  this.rotSpeed = (Math.random() - 0.5) * 0.15;
+  this.vx = (Math.random() - 0.5) * 3;
+  this.vy = 2 + Math.random() * 3;
+  this.opacity = 1;
+}
+
+Piece.prototype.update = function() {
+  this.x += this.vx;
+  this.y += this.vy;
+  this.rot += this.rotSpeed;
+  if (this.y > canvas.height - 80) this.opacity -= 0.02;
+};
+
+Piece.prototype.draw = function() {
+  ctx.save();
+  ctx.globalAlpha = this.opacity;
+  ctx.translate(this.x, this.y);
+  ctx.rotate(this.rot);
+  ctx.fillStyle = this.color;
+  ctx.beginPath();
+  ctx.ellipse(0, 0, this.w/2, this.h/2, 0, 0, Math.PI*2);
+  ctx.fill();
+  ctx.restore();
+};
+
+let confettiRunning = false;
+let confettiFrames = 0;
+
+function launchConfetti() {
+  confettiRunning = true;
+  confettiFrames = 0;
+  for (let i = 0; i < 120; i++) {
+    setTimeout(() => pieces.push(new Piece()), i * 20);
+  }
+}
+
+function animateConfetti() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  pieces = pieces.filter(p => p.opacity > 0);
+  pieces.forEach(p => { p.update(); p.draw(); });
+  if (confettiRunning || pieces.length > 0) requestAnimationFrame(animateConfetti);
+  confettiFrames++;
+  if (confettiFrames > 300) confettiRunning = false;
+}
+
+// ========== FIREWORKS SOUND ==========
+function playFireworks() {
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    const ac = new AudioCtx();
+
+    function burst(time, freq, duration) {
+      const osc = ac.createOscillator();
+      const gain = ac.createGain();
+      osc.connect(gain);
+      gain.connect(ac.destination);
+      osc.frequency.setValueAtTime(freq, time);
+      osc.frequency.exponentialRampToValueAtTime(freq * 0.3, time + duration);
+      gain.gain.setValueAtTime(0.3, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + duration);
+      osc.type = 'sawtooth';
+      osc.start(time);
+      osc.stop(time + duration);
+    }
+
+    // Simulate popping/firework sounds
+    const now = ac.currentTime;
+    burst(now, 800, 0.1);
+    burst(now + 0.15, 1200, 0.08);
+    burst(now + 0.3, 600, 0.12);
+    burst(now + 0.45, 1000, 0.09);
+    burst(now + 0.6, 900, 0.1);
+    burst(now + 0.75, 1400, 0.07);
+  } catch(e) {}
+}
+
+// ========== ENTER BUTTON ==========
+document.getElementById('enter-btn').addEventListener('click', () => {
+  playFireworks();
+
+  const splash = document.getElementById('splash');
+  const main = document.getElementById('main');
+
+  splash.classList.add('hide');
+  setTimeout(() => {
+    splash.style.display = 'none';
+    main.classList.add('show');
+    launchConfetti();
+    animateConfetti();
+    initMusic();
+  }, 800);
+});
+
+// ========== PIANO MUSIC ENGINE ==========
+let musicAC = null;
+let musicPlaying = false;
+let musicNodes = [];
+let musicProgressTimer = null;
+let playerVisible = false;
+let musicLoopTimeout = null;
+let reverbNode = null;
+let masterGain = null;
+
+const NF = {
+  'C2':65.41,'D2':73.42,'E2':82.41,'F2':87.31,'G2':98.00,'A2':110.00,'B2':123.47,
+  'C3':130.81,'D3':146.83,'E3':164.81,'F3':174.61,'G3':196.00,'A3':220.00,'B3':246.94,
+  'C4':261.63,'D4':293.66,'E4':329.63,'F4':349.23,'G4':392.00,'A4':440.00,'B4':493.88,
+  'C5':523.25,'D5':587.33,'E5':659.25,'F5':698.46,'G5':783.99,'A5':880.00,'B5':987.77,
+  'C6':1046.50,'D6':1174.66,'E6':1318.51
+};
+
+// Happy Birthday melody — played twice: soft verse then brighter verse
+const MELODY_V1 = [
+  // Phrase 1
+  ['G4',0.75],['G4',0.25],['A4',1],['G4',1],['C5',1],['B4',2],
+  // Phrase 2
+  ['G4',0.75],['G4',0.25],['A4',1],['G4',1],['D5',1],['C5',2],
+  // Phrase 3
+  ['G4',0.75],['G4',0.25],['G5',1],['E5',1],['C5',1],['B4',1],['A4',2],
+  // Phrase 4
+  ['F5',0.75],['F5',0.25],['E5',1],['C5',1],['D5',1],['C5',3]
+];
+
+// Verse 2: same melody one octave up, slightly faster feel
+const MELODY_V2 = MELODY_V1.map(([n,b]) => {
+  const up = n.replace(/(\d)$/, m => String(parseInt(m)+1));
+  return [NF[up] ? up : n, b];
+});
+
+const BPM = 88;
+const BEAT = 60 / BPM;
+const TOTAL_BEATS = MELODY_V1.reduce((s,n)=>s+n[1],0);
+const VERSE_DUR = TOTAL_BEATS * BEAT;
+const TOTAL_DURATION = VERSE_DUR * 2 + 1.5; // two verses + pause
+
+// Chord progressions per phrase (C major: I IV V I)
+// Each entry: [beat_offset, chord_freqs, duration_beats]
+function buildChordTimeline(startBeat) {
+  return [
+    // Phrase 1 (beats 0-6): C – G
+    [startBeat+0,  [NF['C3'],NF['E3'],NF['G3'],NF['C4']], 3],
+    [startBeat+3,  [NF['G2'],NF['B2'],NF['D3'],NF['G3']], 3],
+    // Phrase 2 (beats 6-12): C – G7
+    [startBeat+6,  [NF['C3'],NF['E3'],NF['G3'],NF['C4']], 3],
+    [startBeat+9,  [NF['G2'],NF['B2'],NF['F3'],NF['G3']], 3],
+    // Phrase 3 (beats 12-20): C – F – C – G
+    [startBeat+12, [NF['C3'],NF['E3'],NF['G3'],NF['C4']], 2],
+    [startBeat+14, [NF['F2'],NF['A2'],NF['C3'],NF['F3']], 2],
+    [startBeat+16, [NF['C3'],NF['E3'],NF['G3'],NF['C4']], 2],
+    [startBeat+18, [NF['G2'],NF['B2'],NF['D3'],NF['G3']], 2],
+    // Phrase 4 (beats 20-27): F – C – G – C
+    [startBeat+20, [NF['F2'],NF['A2'],NF['C3'],NF['F3']], 2],
+    [startBeat+22, [NF['C3'],NF['E3'],NF['G3'],NF['C4']], 2],
+    [startBeat+24, [NF['G2'],NF['B2'],NF['D3'],NF['G3']], 2],
+    [startBeat+26, [NF['C3'],NF['E3'],NF['G3'],NF['C4']], 3],
+  ];
+}
+
+// Create reverb impulse buffer (simulated room reverb)
+function createReverb(ac) {
+  const sampleRate = ac.sampleRate;
+  const length = sampleRate * 2.2;
+  const impulse = ac.createBuffer(2, length, sampleRate);
+  for (let c = 0; c < 2; c++) {
+    const ch = impulse.getChannelData(c);
+    for (let i = 0; i < length; i++) {
+      ch[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 2.5);
+    }
+  }
+  const conv = ac.createConvolver();
+  conv.buffer = impulse;
+  return conv;
+}
+
+// Piano-like note: layered sine+triangle with attack/decay/sustain/release
+function pianoPatch(ac, dest, freq, startTime, duration, vol = 0.38) {
+  const env = ac.createGain();
+  env.connect(dest);
+
+  // Attack
+  env.gain.setValueAtTime(0, startTime);
+  env.gain.linearRampToValueAtTime(vol, startTime + 0.012);
+  // Decay to sustain
+  env.gain.exponentialRampToValueAtTime(vol * 0.6, startTime + 0.08);
+  // Sustain
+  env.gain.setValueAtTime(vol * 0.6, startTime + duration - 0.12);
+  // Release
+  env.gain.exponentialRampToValueAtTime(0.0001, startTime + duration + 0.35);
+
+  // Layer 1: fundamental (sine)
+  const o1 = ac.createOscillator();
+  o1.type = 'sine';
+  o1.frequency.value = freq;
+  const g1 = ac.createGain(); g1.gain.value = 1.0;
+  o1.connect(g1); g1.connect(env);
+  o1.start(startTime); o1.stop(startTime + duration + 0.5);
+  musicNodes.push(o1);
+
+  // Layer 2: 2nd harmonic (sine, lower vol)
+  const o2 = ac.createOscillator();
+  o2.type = 'sine';
+  o2.frequency.value = freq * 2;
+  const g2 = ac.createGain(); g2.gain.value = 0.4;
+  o2.connect(g2); g2.connect(env);
+  o2.start(startTime); o2.stop(startTime + duration + 0.5);
+  musicNodes.push(o2);
+
+  // Layer 3: 3rd harmonic (triangle, gives warmth)
+  const o3 = ac.createOscillator();
+  o3.type = 'triangle';
+  o3.frequency.value = freq * 3;
+  const g3 = ac.createGain(); g3.gain.value = 0.15;
+  o3.connect(g3); g3.connect(env);
+  o3.start(startTime); o3.stop(startTime + duration + 0.5);
+  musicNodes.push(o3);
+
+  // Bright click transient at attack
+  const click = ac.createOscillator();
+  click.type = 'triangle';
+  click.frequency.value = freq * 6;
+  const clickG = ac.createGain();
+  clickG.gain.setValueAtTime(vol * 0.25, startTime);
+  clickG.gain.exponentialRampToValueAtTime(0.0001, startTime + 0.04);
+  click.connect(clickG); clickG.connect(dest);
+  click.start(startTime); click.stop(startTime + 0.05);
+  musicNodes.push(click);
+}
+
+// Soft pad chord for accompaniment
+function padNote(ac, dest, freq, startTime, duration, vol = 0.055) {
+  const env = ac.createGain();
+  env.connect(dest);
+  env.gain.setValueAtTime(0, startTime);
+  env.gain.linearRampToValueAtTime(vol, startTime + 0.3);
+  env.gain.setValueAtTime(vol, startTime + duration - 0.3);
+  env.gain.linearRampToValueAtTime(0, startTime + duration + 0.5);
+
+  const osc = ac.createOscillator();
+  osc.type = 'sine';
+  osc.frequency.value = freq;
+  const lfo = ac.createOscillator();
+  lfo.frequency.value = 5.5;
+  const lfoG = ac.createGain(); lfoG.gain.value = freq * 0.003;
+  lfo.connect(lfoG); lfoG.connect(osc.frequency);
+  osc.connect(env);
+  osc.start(startTime); osc.stop(startTime + duration + 0.8);
+  lfo.start(startTime); lfo.stop(startTime + duration + 0.8);
+  musicNodes.push(osc); musicNodes.push(lfo);
+}
+
+// Arpeggiated bass line (waltz feel: bass on 1, chords on 2&3)
+function scheduleAccompaniment(ac, dest, chordTimeline, beatDuration) {
+  chordTimeline.forEach(([beatOffset, freqs, durationBeats]) => {
+    const t = beatOffset * beatDuration;
+    const dur = durationBeats * beatDuration;
+    // Bass note (root, low)
+    pianoPatch(ac, dest, freqs[0], t, dur * 0.9, 0.18);
+    // Arpeggio: chord tones staggered
+    if (freqs[1]) pianoPatch(ac, dest, freqs[1], t + beatDuration * 0.33, dur * 0.7, 0.07);
+    if (freqs[2]) pianoPatch(ac, dest, freqs[2], t + beatDuration * 0.66, dur * 0.7, 0.07);
+    if (freqs[3]) padNote(ac, dest, freqs[3], t + beatDuration * 0.66, dur * 0.8, 0.045);
+  });
+}
+
+function scheduleVerse(ac, dest, melody, chordTimeline, startTime, volMult = 1) {
+  // Melody
+  let t = startTime;
+  melody.forEach(([note, beats]) => {
+    const freq = NF[note];
+    const dur = beats * BEAT;
+    if (freq) pianoPatch(ac, dest, freq, t, dur * 0.88, 0.38 * volMult);
+    t += dur;
+  });
+
+  // Accompany
+  const shifted = chordTimeline.map(([b, f, d]) => [b + startTime / BEAT, f, d]);
+  scheduleAccompaniment(ac, dest, shifted, BEAT);
+}
+
+function scheduleSong(ac) {
+  masterGain = ac.createGain();
+  masterGain.gain.value = 0.85;
+
+  // Reverb chain
+  reverbNode = createReverb(ac);
+  const reverbGain = ac.createGain();
+  reverbGain.gain.value = 0.28;
+
+  const dryGain = ac.createGain();
+  dryGain.gain.value = 0.72;
+
+  masterGain.connect(dryGain);    dryGain.connect(ac.destination);
+  masterGain.connect(reverbNode); reverbNode.connect(reverbGain); reverbGain.connect(ac.destination);
+
+  const now = ac.currentTime + 0.1;
+  const chords = buildChordTimeline(0);
+
+  // Verse 1 — gentle, slower
+  scheduleVerse(ac, masterGain, MELODY_V1, chords, now, 0.85);
+
+  // Short pause then Verse 2 — slightly brighter/louder
+  const v2Start = now + VERSE_DUR + 1.0;
+  scheduleVerse(ac, masterGain, MELODY_V2, chords, v2Start, 1.0);
+
+  // Ending flourish: rising arpeggio on final C chord
+  const endT = v2Start + VERSE_DUR;
+  [NF['C4'], NF['E4'], NF['G4'], NF['C5'], NF['E5'], NF['G5'], NF['C6']].forEach((f, i) => {
+    pianoPatch(ac, masterGain, f, endT + i * 0.09, 1.2 - i * 0.1, 0.22 - i * 0.02);
+  });
+
+  return TOTAL_DURATION + 0.8;
+}
+
+function startMusic() {
+  if (!musicAC) {
+    musicAC = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (musicAC.state === 'suspended') musicAC.resume();
+  musicNodes = [];
+
+  const dur = scheduleSong(musicAC);
+  musicPlaying = true;
+  updatePlayerUI();
+
+  clearTimeout(musicLoopTimeout);
+  musicLoopTimeout = setTimeout(() => {
+    if (musicPlaying) { stopMusicNodes(); startMusic(); }
+  }, (dur + 0.5) * 1000);
+}
+
+function stopMusicNodes() {
+  musicNodes.forEach(n => { try { n.stop(); } catch(e){} });
+  musicNodes = [];
+  clearTimeout(musicLoopTimeout);
+}
+
+function pauseMusic() {
+  if (musicAC) musicAC.suspend();
+  musicPlaying = false;
+  updatePlayerUI();
+}
+
+function resumeMusic() {
+  if (musicAC) musicAC.resume();
+  musicPlaying = true;
+  updatePlayerUI();
+}
+
+function updatePlayerUI() {
+  const disc = document.getElementById('music-disc');
+  const wave = document.getElementById('music-wave');
+  const btn = document.getElementById('play-pause-btn');
+  const fab = document.getElementById('music-fab');
+  if (musicPlaying) {
+    disc.classList.add('spinning');
+    wave.classList.remove('paused');
+    btn.textContent = '⏸️';
+    fab.textContent = '🎵';
+  } else {
+    disc.classList.remove('spinning');
+    wave.classList.add('paused');
+    btn.textContent = '▶️';
+    fab.textContent = '🎵';
+  }
+}
+
+function startProgressBar() {
+  let elapsed = 0;
+  const bar = document.getElementById('progress-bar');
+  clearInterval(musicProgressTimer);
+  musicProgressTimer = setInterval(() => {
+    if (!musicPlaying) return;
+    elapsed += 0.5;
+    const pct = Math.min((elapsed % TOTAL_DURATION) / TOTAL_DURATION * 100, 100);
+    bar.style.width = pct + '%';
+  }, 500);
+}
+
+document.getElementById('music-fab').addEventListener('click', () => {
+  const card = document.getElementById('music-card');
+  playerVisible = !playerVisible;
+  card.style.display = playerVisible ? 'flex' : 'none';
+});
+
+document.getElementById('play-pause-btn').addEventListener('click', () => {
+  if (musicPlaying) { pauseMusic(); } else { resumeMusic(); }
+});
+
+function initMusic() {
+  const player = document.getElementById('music-player');
+  player.classList.add('show');
+  document.getElementById('music-card').style.display = 'flex';
+  playerVisible = true;
+  startMusic();
+  startProgressBar();
+}
+
+// ========== SCROLL FADE ==========
+const fadeEls = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.15 });
+
+fadeEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
